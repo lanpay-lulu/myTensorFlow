@@ -32,3 +32,5 @@ def main():
         print(sess.run(b))
 
 
+if __name__ == '__main__':
+    main()
