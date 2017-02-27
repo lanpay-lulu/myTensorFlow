@@ -1,10 +1,15 @@
+"""
+Using logistic and softmax is like using a NN with no hidden layer.
+
+"""
+
 
 import tensorflow as tf
 import tensorflow.examples.tutorials.mnist.input_data as input_data
 
 import numpy as np
 
-def init_weights(shape):
+def init_weight(shape):
     return tf.Variable(tf.random_normal(shape, stddev=0.01))
 
 def model(X, w, b):
@@ -22,6 +27,10 @@ def main():
 
     py_x = model(X, w, b)
     cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=py_x, labels=Y)) # compute mean cross entropy (softmax is applied internally)
+    # is the same with belows:
+    # yy = tf.nn.softmax(py_x)
+    # cost = -tf.reduce_mean(Y*tf.log(yy))
+
 
     train_op = tf.train.GradientDescentOptimizer(0.05).minimize(cost) # construct optimizer
 
