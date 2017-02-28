@@ -71,8 +71,8 @@ def main():
             for start in range(0, len(trX), batch_size):
                 end = start + batch_size
                 sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
-                print(i, np.mean(np.argmax(teY, axis=1) ==
-                    sess.run(predict_op, feed_dict={X: teX})))
+            print(i, np.mean(np.argmax(teY, axis=1) ==
+                sess.run(predict_op, feed_dict={X: teX})))
 
 
 if __name__ == '__main__':
