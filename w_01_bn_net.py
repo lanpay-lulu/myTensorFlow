@@ -52,7 +52,7 @@ def built_net(xs, ys, norm):
 
 def main():
     mnist = input_data.read_data_sets("mnist/input_data/", one_hot=True)
-    trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.    images, mnist.test.labels
+    trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
     X = tf.placeholder('float', [None, 784])
     Y = tf.placeholder('float', [None, 10])
     
@@ -68,7 +68,7 @@ def main():
         for i in range(100):
             for start in range(0, len(trX), batch_size):
                 end = start + batch_size
-                sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[star    t:end]})
+                sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
                 print(i, np.mean(np.argmax(teY, axis=1) ==
                     sess.run(predict_op, feed_dict={X: teX})))
 
