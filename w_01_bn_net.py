@@ -27,6 +27,7 @@ def built_net(xs, ys, norm):
 
     for l in range(N_LAYERS):
         layer_input = layers_inputs[l]
+        in_size = layer_input.get_shape()[1].value
         
         output = add_layer(
             layer_input,    # input
