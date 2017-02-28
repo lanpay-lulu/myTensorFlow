@@ -8,9 +8,9 @@ import tensorflow as tf
 import tensorflow.examples.tutorials.mnist.input_data as input_data
 
 
-N_LAYERS = 3
+N_LAYERS = 2
 ACTIVATION = tf.nn.relu
-N_HIDDEN_UNITS = 30
+N_HIDDEN_UNITS = 128
 
 def built_net(xs, ys, norm):
     def add_layer(inputs, in_size, out_size, acfun=None):
