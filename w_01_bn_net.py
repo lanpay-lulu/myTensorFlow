@@ -44,6 +44,7 @@ def built_net(xs, ys, norm):
         10, 
         acfun=None
     )
+    layers_inputs.append(py)
     
     cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=py, labels=ys))
     #cost = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction), reduction_indices=[1]))
