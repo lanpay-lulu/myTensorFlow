@@ -39,7 +39,7 @@ def main():
     b_o = init_weight([1, 10])
 
     p_keep_hidden = tf.placeholder("float")
-    py_x = model(X, w_h, b_h, w_h2, b_h2, w_o, b_o)
+    py_x = model(X, w_h, b_h, w_h2, b_h2, w_o, b_o, p_keep_hidden)
     cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=py_x, labels=Y)) # compute mean cross entropy (softmax is applied internally)
 
     train_op = tf.train.RMSPropOptimizer(0.001, 0.9).minimize(cost)
