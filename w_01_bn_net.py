@@ -1,6 +1,11 @@
 """
 deep net with batch normalization
 
+When the net is deep, bn will make it converge faster.
+When using bn, train and test are different.
+But in this case, we use ExponentialMovingAverag to update mean and var, so it`s
+ok that train and test process are the same.
+
 """
 
 import numpy as np
