@@ -38,7 +38,7 @@ def model(X, w, w2, w3, w4, w_o, p_keep_conv):
     return py
 
 def main():
-    
+    mnist = input_data.read_data_sets("mnist/input_data/", one_hot=True)
     trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
     trX = trX.reshape(-1, 28, 28, 1)  # 28x28x1 input img
     teX = teX.reshape(-1, 28, 28, 1)  # 28x28x1 input img
