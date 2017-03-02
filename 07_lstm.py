@@ -64,8 +64,7 @@ def main():
             np.random.shuffle(test_indices)
             test_indices = test_indices[0:test_size]
             print(i, np.mean(np.argmax(teY[test_indices], axis=1) ==
-                        sess.run(predict_op, feed_dict={X: teX[test_indices],
-                                                        p_keep_conv: 1.0})))
+                        sess.run(predict_op, feed_dict={X: teX[test_indices]})))
 
 
 
