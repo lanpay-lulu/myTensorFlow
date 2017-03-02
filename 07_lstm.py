@@ -19,7 +19,8 @@ def model(X, w, b, lstm_size):
     # xt shape: (time_step_size, batch_size, input_vec_size)
     xr = tf.reshape(xt, [-1, lstm_size])
     # XR shape: (time_step_size * batch_size, input_vec_size)
-    x_split = tf.split(xr, time_step_size, 0) # split them to time_step_size (28 arrays)
+    #x_split = tf.split(xr, time_step_size, 0) # split them to time_step_size (28 arrays)
+    x_split = tf.split(0, time_step_size, xr) # split them to time_step_size (28 arrays)
     # Each array shape: (batch_size, input_vec_size)
 
     lstm = rnn.BasicLSTMCell(lstm_size, forget_bias=1.0, state_is_tuple=True)
