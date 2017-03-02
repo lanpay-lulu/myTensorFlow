@@ -2,7 +2,6 @@
 
 import tensorflow as tf
 import numpy as np
-#from tensorflow.contrib import rnn
 from tensorflow.examples.tutorials.mnist import input_data
 
 
@@ -25,7 +24,7 @@ def model(X, w, b, lstm_size):
     lstm = tf.nn.rnn_cell.BasicLSTMCell(lstm_size, forget_bias=1.0, state_is_tuple=True)
     
     # Get lstm cell output, time_step_size (28) arrays with lstm_size output: (batch_size, lstm_size)
-    outputs, _states = rnn.static_rnn(lstm, X_split, dtype=tf.float32)
+    outputs, _states = tf.nn.rnn(lstm, X_split, dtype=tf.float32)
     
     # Linear activation
     return tf.matmul(outputs[-1], w) + b, lstm.state_size # State size to initialize the stat
