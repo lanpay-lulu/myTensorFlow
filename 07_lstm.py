@@ -59,7 +59,7 @@ def main():
         for i in range(100):
             for start in range(0, len(trX), batch_size):
                 end = start + batch_size
-                sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end], p_keep_conv:0.8})
+                sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
             test_indices = np.arange(len(teX)) # Get A Test Batch
             np.random.shuffle(test_indices)
             test_indices = test_indices[0:test_size]
