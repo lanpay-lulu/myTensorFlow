@@ -14,19 +14,25 @@ def init_weights(shape):
 
 def model(X, w, b, lstm_size):
     # X, input shape: (batch_size, time_step_size, input_vec_size)
+    # X is a1,a2  b1,b2  c1,c2
+    #      a3,a4  b3,b4  c3,c4
     xt = tf.transpose(X, [1,0,2]) # exchange batch_size and time_step_size
     # xt shape: (time_step_size, batch_size, input_vec_size)
     xr = tf.reshape(xt, [-1, lstm_size])
     # XR shape: (time_step_size * batch_size, input_vec_size)
     x_split = tf.split(0, time_step_size, xr) # split them to time_step_size (28 arrays)
     # Each array shape: (batch_size, input_vec_size)
+    # x_split is a1,a2  a3,a4
+    #            b1,b2  b3,b4
+    #            c1,c2  c3,c4
 
     lstm = tf.nn.rnn_cell.BasicLSTMCell(lstm_size, forget_bias=1.0, state_is_tuple=True)
     
     # Get lstm cell output, time_step_size (28) arrays with lstm_size output: (batch_size, lstm_size)
+    #inputs: A length T list of inputs, each a Tensor of shape [batch_size, input_size]
     outputs, _states = tf.nn.rnn(lstm, x_split, dtype=tf.float32)
     
-    # Linear activation
+    # Linear activation, for softmax
     return tf.matmul(outputs[-1], w) + b, lstm.state_size # State size to initialize the stat
     
 
