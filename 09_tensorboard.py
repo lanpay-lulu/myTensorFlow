@@ -1,3 +1,4 @@
+#coding=utf-8
 """
 
 """
@@ -38,6 +39,10 @@ def main():
     w_o = init_weight([hdim2, 10])
     b_o = init_weight([1, 10])
 
+    # histogram 用来记录变量的数值分布图
+    # scalar 用来记录变量的数值
+    # 记录与展现频率是自己定的，每次运行
+    # summary, acc = sess.run([merged, acc_op] 就会进行记录
     tf.summary.histogram('w_h_summ', w_h)
     tf.summary.histogram('w_h2_summ', w_h2)
     tf.summary.histogram('w_o_summ', w_o)
