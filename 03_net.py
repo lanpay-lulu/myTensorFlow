@@ -23,6 +23,8 @@ def main():
     X = tf.placeholder('float', [None, 784])
     Y = tf.placeholder('float', [None, 10])
 
+    print trX.shape
+
     w_h = init_weight([784, 128])
     b_h = init_weight([1, 128])
     w_o = init_weight([128, 10])
@@ -50,8 +52,8 @@ def main():
                 sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end]})
             print(i, np.mean(np.argmax(teY, axis=1) ==
                 sess.run(predict_op, feed_dict={X: teX})))
-
-
+            cc = sess.run(cost, feed_dict={X: teX, Y: teY})
+            print('cost:', cc)
 
 if __name__ == '__main__':
     main()

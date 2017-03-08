@@ -2,3 +2,5 @@
 logs/
 mnist/
 ckpt_dir/
+checkpoints/
+samples/
