@@ -169,7 +169,7 @@ class DCGAN(object):
                 counter += 1
 
                 # sample and save
-                if np.mod(counter, 100) == 1:
+                if np.mod(counter, 200) == 1:
                     samples, d_loss, g_loss = self.sess.run(
                             [self.sampler, self.d_loss, self.g_loss],
                             feed_dict={

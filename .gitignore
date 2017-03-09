@@ -1,4 +1,5 @@
 *.swp
+*.DS*
 logs/
 mnist/
 ckpt_dir/

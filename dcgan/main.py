@@ -36,7 +36,7 @@ def main():
                 z_dim=100)
 
         x = np.concatenate((trX, teX), axis=0)
-        x = x / 255.
+        print x[0].max()
         y = np.concatenate((trY, teY), axis=0)
 
         dcgan.train(x, y, FLAGS)
